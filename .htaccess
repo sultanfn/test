@@ -1,0 +1,20 @@
+#RewriteEngine on
+
+#RewriteRule ^index?$ index.html
+#RewriteRule ^services?$ services.html
+
+# mod_rewrite Starts here
+
+RewriteEngine on
+
+# does not apply to existing directories, meaning if the folder exists on the server then don't change anything and Don't run the rule!
+
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Check for file in directgory with .html extension
+
+RewriteCond %{REQUEST_FILENAME}\.html -f
+
+#Here show the page that has the .html extension
+
+RewriteRule ^(.*)$ $1.html [NC,L]
